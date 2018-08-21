@@ -1,0 +1,28 @@
+<header>
+  <div class="logo"><img src="../../../assets/logo.png" alt="RBT Credit Control" /></div>
+    <div class="dropdown top-menu">
+        <span class="dropdown-toggle" data-toggle="dropdown">
+            {{userName}}
+            <span class="caret"></span>
+        </span>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item"[routerLink]="['/user/changepassword']" [queryParams]="{key:sessionToken}">Change Password</a></li>
+            <li><a class="dropdown-item" [routerLink]='' (click)="logoutCall()">Logout </a></li>
+        </ul>
+    </div>
+</header>
+
+<nav-menu></nav-menu>
+<div class="main_content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; Copyright 2018 Riya Travel & Tours
+</footer>

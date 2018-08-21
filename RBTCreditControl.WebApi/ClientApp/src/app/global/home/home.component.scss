@@ -1,0 +1,85 @@
+.form-control {
+  box-shadow: none;
+  border-color: #ddd;
+  &:focus {
+    border-color: #337ab7;
+  }
+}
+
+.login-form {
+  position: absolute;
+  width: 350px;
+  top: 50%;
+  left: 50%;
+  color: #434343;
+  border-radius: 1px;
+  margin-bottom: 15px;
+  background: #fff;
+  border: 1px solid #f3f3f3;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 30px 22px;
+  transform: translate(-50%,-50%);
+
+  h4 {
+    text-align: center;
+    font-size: 17px;
+    line-height: 17px;
+    margin: 10px 0 30px 0;
+    color: #313052;
+  }
+
+  .avatar {
+    color: #fff;
+    text-align: center;
+    z-index: 9;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    min-height: 40px;
+    border-radius: 2px;
+    transition: all 0.5s;
+  }
+
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
+  .btn {
+    min-height: 40px;
+    border-radius: 2px;
+    transition: all 0.5s;
+    background: #337ab7;
+    border: none;
+    line-height: normal;
+  }
+
+  .checkbox-inline {
+    float: left;
+  }
+
+  input[type="checkbox"] {
+    margin-top: 2px;
+  }
+
+  .forgot-link {
+    float: right;
+  }
+
+  .small {
+    font-size: 13px;
+  }
+
+  a {
+    color: #337ab7;
+  }
+}
+
+.text-center.small {
+  margin: 5px 0 0 0;
+}

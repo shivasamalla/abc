@@ -1,0 +1,67 @@
+<span>
+  <b>Users</b> <a class="btn btn-primary btn-sm" [routerLink]="['/user/createsupervisor']" [queryParams]="{key:sessionToken}">Create</a>
+</span>
+
+<div class="content_area">
+  <table class='table table-striped'>
+    <thead class="thead-dark">
+      <tr>
+        <!--<th>No</th>-->
+        <th>Employee Code</th>
+        <th>Employee Name </th>
+        <th>Email</th>
+        <th>Reportee</th>
+        <th>Password</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="userData.length==0">
+        <td colspan="4">
+          No records present
+        </td>
+      </tr>
+
+      <tr *ngFor="let user of userData;let i=index">
+        <!--<th>{{page+i+1}}</th>-->
+        <td>{{user.empCode}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.supervisor==null?'Supervisor':user.supervisor}}</td>
+        <td>{{user.password}}</td>
+        <td *ngIf="user.supervisor==null">
+          <a class="editbutton" [routerLink]="['/user/editsupervisor']" [queryParams]="{id:user.id,name:user.name,key:sessionToken,code:user.empCode}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <!--<a class="deletebutton" [routerLink]="" (click)="deactiveRBTUser(user.id)"><i class="fa fa-trash" aria-hidden="true"></i></a>-->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="corpPageFooter">
+  <div class="row">
+    <div class="col-md-1 pagiselect">
+      <select aria-hidden="true" (change)="noofRecordstoDisplay($event)">
+        <option *ngFor="let val of drpdwnPageSizes" [ngValue]="val">{{val}}</option>
+      </select>
+    </div>
+    <div class="col-md-8">
+      <ul class="pagination">
+        <li *ngIf="totalNoofpages>=11" (click)="previousPage(pageShow-10)">Previous</li>
+        <li *ngIf="totalNoofpages>=pageShow+1" (click)="currentPageBind(pageShow+1)">{{pageShow+1}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+2" (click)="currentPageBind(pageShow+2)">{{pageShow+2}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+3" (click)="currentPageBind(pageShow+3)">{{pageShow+3}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+4" (click)="currentPageBind(pageShow+4)">{{pageShow+4}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+5" (click)="currentPageBind(pageShow+5)">{{pageShow+5}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+6" (click)="currentPageBind(pageShow+6)">{{pageShow+6}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+7" (click)="currentPageBind(pageShow+7)">{{pageShow+7}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+8" (click)="currentPageBind(pageShow+8)">{{pageShow+8}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+9" (click)="currentPageBind(pageShow+9)">{{pageShow+9}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+10" (click)="currentPageBind(pageShow+10)">{{pageShow+10}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+10" (click)="nextPage(pageShow+10)">Next</li>
+      </ul>
+    </div>
+    <div class="col-md-2 pagiselect">
+      {{((page-1)*paginationSize)+1}}-{{page*paginationSize}} of {{totalRecords|number}}
+    </div>
+  </div>
+</div>

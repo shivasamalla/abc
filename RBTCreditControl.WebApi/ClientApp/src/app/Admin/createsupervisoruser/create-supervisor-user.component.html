@@ -1,0 +1,47 @@
+<h1>Create Supervisor</h1>
+<div class="content_area">
+  <div id="floatalert">{{successMsg}}</div>
+  <form #rbtusercreationform="ngForm">
+    <div class="row">
+      <div class="col-md-4 form-group">
+        <label class="control-label">Employee Code</label>
+        <input type="text" id="emCode" required name="empCode" (change)="verifyEmpCode()" [(ngModel)]="supervisorUserDetails.empCode" #empCode="ngModel" class="form-control" />
+        <!--<small *ngIf="empCode.errors?.pattern" class="validation-error-msg">Only numbers allowed</small>-->
+        <small class="validation-error-msg">{{empCodeErrorMsg}}</small>
+      </div>
+      <div class="col-md-4 form-group">
+        <label class="control-label">Name</label>
+        <input type="text" disabled required name="empName" [(ngModel)]="supervisorUserDetails.name" #empName="ngModel" class="form-control" />
+      </div>
+      <div class="col-md-4 form-group">
+        <label class="control-label">Email</label>
+        <input type="email" id="employeeEmail" required name="empEmail" [(ngModel)]="supervisorUserDetails.email" #empEmail="ngModel" class="form-control" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <div class="branch_locations">
+          <h5>Branches :</h5>
+          <div class="branchLocList">
+            <ul class="locationsList">
+              <li *ngFor="let loc of locationData;">
+                <input type="checkbox" value="{{loc.id}}" (change)="locationsSelected(loc.id,$event)" /> {{loc.branchLocation}} &nbsp;({{loc.branch}})
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group text-center">
+        <input type="submit" [disabled]="rbtusercreationform.invalid" value="Create" (click)="createRBTCreditSupervisor();rbtusercreationform.reset()" class="button btn btn-success" />
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="row">
+  <div class="col-md-4 form-group">
+    <a class="backtolist btn btn-primary" [routerLink]="['/user/admin']" [queryParams]="{key:sessionToken}">Back to List</a>
+  </div>
+</div>

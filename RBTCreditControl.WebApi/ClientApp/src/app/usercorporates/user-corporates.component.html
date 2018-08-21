@@ -1,0 +1,111 @@
+<h1>Corporates List </h1>
+<a class="refreshBtn btn btn-primary" (click)="RefreshGrid()"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+<div class="content_area">
+  <!--<a href="#" data-toggle="tooltip" data-placement="top" title="Hooray!">Top</a>-->
+  <!--<div id="floatalert"> {{successMsg}} </div>-->
+
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#fff" type="ball-clip-rotate-pulse"></ngx-spinner>
+
+  <!--<div class="progressBar" id="progressBar"></div>-->
+  <table class='table table-striped'>
+
+    <thead class="thead-dark">
+      <tr>
+        <th width="150">ICUST</th>
+        <th>Name</th>
+        <th width="150">Phone</th>
+        <th width="200">Email</th>
+        <!--<th>Action</th>-->
+        <th width="120">Balance(₹)</th>
+        <th width="90" *ngIf="role=='Supervisor'">SetPriority</th>
+        <th width="90" *ngIf="role!='Supervisor'">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="corporatesData.length==0">
+        <td colspan="7">
+          No records Found
+        </td>
+      </tr>
+      <tr *ngFor="let usercorp of corporatesData">
+        <td>
+          <div class="usrcrp_icust">{{usercorp.no_}}({{usercorp.location}}) <i *ngIf="usercorp.priority==1" class="fa fa-star clsPri" aria-hidden="true"></i></div>
+        </td>
+        <td>{{usercorp.name}}</td>
+        <td><div class="usrcrp_phone" data-toggle="tooltip" data-placement="top" title="{{usercorp.phone}}">{{usercorp.phone}}</div></td>
+        <td><div class="usrcrp_email" data-toggle="tooltip" data-placement="top" title="{{usercorp.email}}">{{usercorp.email}}</div></td>
+        <td>{{usercorp.balance|number}}</td>
+        <td *ngIf="role=='Supervisor'"><button class="btn btn-primary btnSmall" (click)="setPriority(usercorp)">{{usercorp.priority==0?'High':'Normal'}}</button>
+        <td *ngIf="role!='Supervisor'"><a href="#" data-toggle="modal" data-target="#myModal" (click)="corporateClicked(usercorp)">Update</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title text-center">{{selectedCorporatedData.name}}({{selectedCorporatedData.no_}}) </h4>
+        <button type="button" id="popupClose" class="btn btn-danger" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form #RBTuserCorpForm="ngForm">
+          <div class="row">
+            <div class="col-md-4 form-group">
+              <label>From Date</label>             
+              <input type="text" id="fromDate" required bsDatepicker [bsConfig]="datePickerConfig" [(ngModel)]="userCorpDataObj.fromDate" name="frDt" #frDt="ngModel" class="form-control" />
+            </div>
+            <div class="col-md-4 form-group">
+              <label>To Date</label>             
+              <input type="text" id="toDate"  required bsDatepicker [bsConfig]="datePickerConfig" [(ngModel)]="userCorpDataObj.toDate" name="toDt" #toDt="ngModel" class="form-control" />
+            </div>
+            <div class="col-md-4 form-group">
+              <label>Amount</label>
+              <input type="text" required [(ngModel)]="userCorpDataObj.amount" name="amnt" #amnt="ngModel" id="amount" class="form-control" />
+            </div>
+          </div>
+
+          <div class="form-group text-center">
+            <input class="btn btn-primary"  [disabled]="RBTuserCorpForm.invalid" type="submit" value="Submit" (click)="submitCorporate()" />
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="corpPageFooter">
+  <div class="row">
+    <div class="col-md-2 pagiselect">
+      <select aria-hidden="true" (change)="noofRecordstoDisplay($event)">
+        <option *ngFor="let val of drpdwnPageSizes" [ngValue]="val">{{val}}</option>
+      </select>
+    </div>
+    <div class="col-md-8">
+      <ul class="pagination" id="grouplist">
+        <li *ngIf="totalNoofpages>=11" (click)="previousPage(pageShow-10)">Previous</li>
+        <li *ngIf="totalNoofpages>=pageShow+1" id="li{{pageShow+1}}" [ngClass]=" {'active': selectedIndex ==pageShow+1, 'list-group-item active': true}" (click)="currentPageBind(pageShow+1)">{{pageShow+1}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+2" id="li{{pageShow+2}}" [ngClass]="{'active': selectedIndex == pageShow+2, 'list-group-item': true}" (click)="currentPageBind(pageShow+2)">{{pageShow+2}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+3" id="li{{pageShow+3}}" [ngClass]="{'active': selectedIndex == pageShow+3, 'list-group-item': true}" (click)="currentPageBind(pageShow+3)">{{pageShow+3}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+4" id="li{{pageShow+4}}" [ngClass]="{'active': selectedIndex == pageShow+4, 'list-group-item': true}" (click)="currentPageBind(pageShow+4)">{{pageShow+4}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+5" id="li{{pageShow+5}}" [ngClass]="{'active': selectedIndex == pageShow+5, 'list-group-item': true}" (click)="currentPageBind(pageShow+5)">{{pageShow+5}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+6" id="li{{pageShow+6}}" [ngClass]="{'active': selectedIndex == pageShow+6, 'list-group-item': true}" (click)="currentPageBind(pageShow+6)">{{pageShow+6}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+7" id="li{{pageShow+7}}" [ngClass]="{'active': selectedIndex == pageShow+7, 'list-group-item': true}" (click)="currentPageBind(pageShow+7)">{{pageShow+7}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+8" id="li{{pageShow+8}}" [ngClass]="{'active': selectedIndex == pageShow+8, 'list-group-item': true}" (click)="currentPageBind(pageShow+8)">{{pageShow+8}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+9" id="li{{pageShow+9}}" [ngClass]="{'active': selectedIndex == pageShow+9, 'list-group-item': true}" (click)="currentPageBind(pageShow+9)">{{pageShow+9}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+10" id="li{{pageShow+10}}" [ngClass]="{'active': selectedIndex == pageShow+10, 'list-group-item': true}" (click)="currentPageBind(pageShow+10)">{{pageShow+10}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+10" (click)="nextPage(pageShow+10)">Next</li>
+      </ul>
+    </div>
+
+    <div class="col-md-2 pagiselect">
+      {{((page-1)*paginationSize)+1}}-{{page*paginationSize}} of {{totalRecords|number}}
+    </div>
+  </div>
+</div>

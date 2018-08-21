@@ -1,0 +1,52 @@
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csprojResolveAssemblyReference.cache
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csproj.CoreCompileInputs.cache
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.AssemblyInfoInputs.cache
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.AssemblyInfo.cs
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.deps.json
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.dll
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.pdb
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csproj.CopyComplete
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.dll
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.pdb
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.deps.json
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.dll
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.pdb
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csprojAssemblyReference.cache
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csproj.CoreCompileInputs.cache
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.AssemblyInfoInputs.cache
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.AssemblyInfo.cs
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csproj.CopyComplete
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.dll
+D:\RBT CREDIT CONTROL\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.pdb
+D:\RBT Credit with CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.deps.json
+D:\RBT Credit with CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.runtimeconfig.json
+D:\RBT Credit with CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.runtimeconfig.dev.json
+D:\RBT Credit with CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.dll
+D:\RBT Credit with CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.pdb
+D:\RBT Credit with CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+D:\RBT Credit with CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb
+D:\RBT Credit with CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csprojAssemblyReference.cache
+D:\RBT Credit with CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csproj.CoreCompileInputs.cache
+D:\RBT Credit with CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.AssemblyInfoInputs.cache
+D:\RBT Credit with CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.AssemblyInfo.cs
+D:\RBT Credit with CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csproj.CopyComplete
+D:\RBT Credit with CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.dll
+D:\RBT Credit with CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.pdb
+D:\RBT CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.deps.json
+D:\RBT CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.runtimeconfig.json
+D:\RBT CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.runtimeconfig.dev.json
+D:\RBT CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.dll
+D:\RBT CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Repository.pdb
+D:\RBT CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+D:\RBT CLI\RBTCreditControl.Repository\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb
+D:\RBT CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csprojAssemblyReference.cache
+D:\RBT CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csproj.CoreCompileInputs.cache
+D:\RBT CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.AssemblyInfoInputs.cache
+D:\RBT CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.AssemblyInfo.cs
+D:\RBT CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.csproj.CopyComplete
+D:\RBT CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.dll
+D:\RBT CLI\RBTCreditControl.Repository\obj\Debug\netcoreapp2.0\RBTCreditControl.Repository.pdb

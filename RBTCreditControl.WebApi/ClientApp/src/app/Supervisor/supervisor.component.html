@@ -1,0 +1,106 @@
+<h1>
+  Users List <a class="btn btn-primary btn-sm" [routerLink]="['/user/createuser']" [queryParams]="{key:sessionToken}">
+    <i class="fa fa-user-plus" aria-hidden="true"></i> Create
+  </a>
+</h1>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" color="#fff" type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="content_area">
+  <table class='table table-striped'>
+    <thead class="thead-dark">
+      <tr>
+        <th>User Name </th>
+        <th>User Code</th>
+        <th>User Type</th>
+        <th>Supervisor</th>
+        <th>Status</th>
+        <th>Corporates</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="6" *ngIf="userData.length==0">
+          No records present
+        </td>
+      </tr>
+      <tr *ngFor="let user of userData">
+        <td>{{user.name}}</td>
+        <td>{{user.empCode}}</td>
+        <td>{{user.userType}}</td>
+        <td>{{user.supervisor}}</td>
+        <td><a style="cursor: pointer" (click)="changeUserStatus(user)">{{user.isActive==true? 'Active':'In Active'}}</a></td>
+        <td><a style="cursor: pointer" data-toggle="modal" data-target="#myModal" href="#" (click)="showUserCorporates(user.id)">View Corporates</a></td>
+        <td>
+          <a class="editbutton" [routerLink]="['/user/edituser']" [queryParams]="{id:user.id,key:sessionToken,name:user.name,code:user.empCode}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <!--<a class="deletebutton" [routerLink]="" (click)="deactiveRBTUser(user.id)"><i class="fa fa-trash" aria-hidden="true"></i></a>-->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">User Corporate List</h4>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Phone</th>
+              <th>Icust</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let showCorp of showUserCorpData">
+              <td>{{showCorp.name}}</td>
+              <td>{{showCorp.location}}</td>
+              <td>999-999-4160</td>
+              <td>{{showCorp.no_}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="corpPageFooter">
+  <div class="row">
+    <div class="col-md-2 pagiselect">
+      <select aria-hidden="true" (change)="noofRecordstoDisplay($event)">
+        <option *ngFor="let val of drpdwnPageSizes" [ngValue]="val">{{val}}</option>
+      </select>
+
+    </div>
+    <div class="col-md-8">
+      <ul class="pagination" id="grouplist">
+        <li *ngIf="totalNoofpages>=11" (click)="previousPage(pageShow-10)">Previous</li>
+        <li *ngIf="totalNoofpages>=pageShow+1" id="li{{pageShow+1}}" [ngClass]=" {'active': selectedIndex ==pageShow+1, 'list-group-item active': true}" (click)="currentPageBind(pageShow+1)">{{pageShow+1}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+2" id="li{{pageShow+2}}" [ngClass]="{'active': selectedIndex == pageShow+2, 'list-group-item': true}" (click)="currentPageBind(pageShow+2)">{{pageShow+2}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+3" id="li{{pageShow+3}}" [ngClass]="{'active': selectedIndex == pageShow+3, 'list-group-item': true}" (click)="currentPageBind(pageShow+3)">{{pageShow+3}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+4" id="li{{pageShow+4}}" [ngClass]="{'active': selectedIndex == pageShow+4, 'list-group-item': true}" (click)="currentPageBind(pageShow+4)">{{pageShow+4}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+5" id="li{{pageShow+5}}" [ngClass]="{'active': selectedIndex == pageShow+5, 'list-group-item': true}" (click)="currentPageBind(pageShow+5)">{{pageShow+5}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+6" id="li{{pageShow+6}}" [ngClass]="{'active': selectedIndex == pageShow+6, 'list-group-item': true}" (click)="currentPageBind(pageShow+6)">{{pageShow+6}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+7" id="li{{pageShow+7}}" [ngClass]="{'active': selectedIndex == pageShow+7, 'list-group-item': true}" (click)="currentPageBind(pageShow+7)">{{pageShow+7}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+8" id="li{{pageShow+8}}" [ngClass]="{'active': selectedIndex == pageShow+8, 'list-group-item': true}" (click)="currentPageBind(pageShow+8)">{{pageShow+8}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+9" id="li{{pageShow+9}}" [ngClass]="{'active': selectedIndex == pageShow+9, 'list-group-item': true}" (click)="currentPageBind(pageShow+9)">{{pageShow+9}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+10" id="li{{pageShow+10}}" [ngClass]="{'active': selectedIndex == pageShow+10, 'list-group-item': true}" (click)="currentPageBind(pageShow+10)">{{pageShow+10}}</li>
+        <li *ngIf="totalNoofpages>=pageShow+10" (click)="nextPage(pageShow+10)">Next</li>
+      </ul>
+    </div>
+    <div class="col-md-2 pagiselect">
+      {{((page-1)*paginationSize)+1}}-{{page*paginationSize}} of {{totalRecords|number}}
+    </div>
+  </div>
+</div>

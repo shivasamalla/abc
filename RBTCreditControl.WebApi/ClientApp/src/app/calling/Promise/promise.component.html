@@ -1,0 +1,183 @@
+<h1>Promise List</h1>
+<a class="refreshBtn btn btn-primary" (click)="RefreshGrid()"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+<div class="content_area">
+    <div id="floatalert">        {{successMsg}}   </div>
+    <table class='table table-striped'>
+        <thead class="thead-dark">
+            <tr>
+                <th>Promise Date</th>
+                <th>ICUST</th>
+                <th>Name</th>
+                <th>Balance(₹)</th>
+                <th>Promise Amount(₹)</th>
+                <th>UpdatedBy</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="corporatesData.length==0">
+                <td colspan="7">
+                    No records Found
+                </td>
+            </tr>
+            <!--<tr>
+                <td>
+                    <a href="#" data-toggle="modal" data-target="#myModal" (click)="corporateClicked(usercorp)">Action</a>
+                </td>
+            </tr>-->
+            <tr *ngFor="let followup of corporatesData">
+                <td>{{followup.promiseDate.split('T')[0]}}</td>
+                <td>{{followup.corporateIcust}}</td>
+                <td>{{followup.corporateName}}</td>
+                <td>{{followup.balance|number:0}}</td>
+                <td>{{followup.promiseAmount|number:0}}</td>
+                <td>{{followup.userUpdatedBy}}</td>
+                <td><a href="#" data-toggle="modal" data-target="#myModal" (click)="promiseViewClicked(followup)">View Details</a></td>
+                <td><a href="#" data-toggle="modal" data-target="#myModal1" (click)="promiseActionClicked(followup)">Action</a></td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="corpPageFooter">
+    <div class="row">
+        <div class="col-md-2 pagiselect">
+            <select aria-hidden="true" (change)="noofRecordstoDisplay($event)">
+                <option *ngFor="let val of drpdwnPageSizes" [ngValue]="val">{{val}}</option>
+            </select>
+        </div>
+        <div class="col-md-8">
+            <ul class="pagination" id="grouplist">
+                <li *ngIf="totalNoofpages>=11" (click)="previousPage(pageShow-10)">Previous</li>
+                <li *ngIf="totalNoofpages>=pageShow+1" id="li{{pageShow+1}}" [ngClass]=" {'active': selectedIndex ==pageShow+1, 'list-group-item active': true}" (click)="currentPageBind(pageShow+1)">{{pageShow+1}}</li>
+                <li *ngIf="totalNoofpages>=pageShow+2" id="li{{pageShow+2}}" [ngClass]="{'active': selectedIndex == pageShow+2, 'list-group-item': true}" (click)="currentPageBind(pageShow+2)">{{pageShow+2}}</li>
+                <li *ngIf="totalNoofpages>=pageShow+3" id="li{{pageShow+3}}" [ngClass]="{'active': selectedIndex == pageShow+3, 'list-group-item': true}" (click)="currentPageBind(pageShow+3)">{{pageShow+3}}</li>
+                <li *ngIf="totalNoofpages>=pageShow+4" id="li{{pageShow+4}}" [ngClass]="{'active': selectedIndex == pageShow+4, 'list-group-item': true}" (click)="currentPageBind(pageShow+4)">{{pageShow+4}}</li>
+                <li *ngIf="totalNoofpages>=pageShow+5" id="li{{pageShow+5}}" [ngClass]="{'active': selectedIndex == pageShow+5, 'list-group-item': true}" (click)="currentPageBind(pageShow+5)">{{pageShow+5}}</li>
+                <li *ngIf="totalNoofpages>=pageShow+6" id="li{{pageShow+6}}" [ngClass]="{'active': selectedIndex == pageShow+6, 'list-group-item': true}" (click)="currentPageBind(pageShow+6)">{{pageShow+6}}</li>
+                <li *ngIf="totalNoofpages>=pageShow+7" id="li{{pageShow+7}}" [ngClass]="{'active': selectedIndex == pageShow+7, 'list-group-item': true}" (click)="currentPageBind(pageShow+7)">{{pageShow+7}}</li>
+                <li *ngIf="totalNoofpages>=pageShow+8" id="li{{pageShow+8}}" [ngClass]="{'active': selectedIndex == pageShow+8, 'list-group-item': true}" (click)="currentPageBind(pageShow+8)">{{pageShow+8}}</li>
+                <li *ngIf="totalNoofpages>=pageShow+9" id="li{{pageShow+9}}" [ngClass]="{'active': selectedIndex == pageShow+9, 'list-group-item': true}" (click)="currentPageBind(pageShow+9)">{{pageShow+9}}</li>
+                <li *ngIf="totalNoofpages>=pageShow+10" id="li{{pageShow+10}}" [ngClass]="{'active': selectedIndex == pageShow+10, 'list-group-item': true}" (click)="currentPageBind(pageShow+10)">{{pageShow+10}}</li>
+                <li *ngIf="totalNoofpages>=pageShow+10" (click)="nextPage(pageShow+10)">Next</li>
+            </ul>
+        </div>
+
+        <div class="col-md-2 pagiselect">
+            {{((page-1)*paginationSize)+1}}-{{page*paginationSize}} of {{totalRecords|number}}
+        </div>
+    </div>
+</div>
+<!--code for view detail popup start-->
+<div class="modal fade" id="myModal" *ngIf="viewCorporate">
+    <!--checking ngif condition after the action button clicked-->
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title text-center">Promise Corporate Details</h1>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+            <div class="modal-body">
+                <table class="viewDtlsTble">
+                    <tr>
+                        <th>Name</th>
+                        <td>{{viewCorporate.name}}</td>
+                        <th>ICUST</th>
+                        <td>{{viewCorporate.no_}}</td>
+                    </tr>
+                    <tr>
+                        <th>Location</th>
+                        <td>{{viewCorporate.location}}</td>
+                        <th>Phone</th>
+                        <td>{{viewCorporate.phone}}</td>
+                    </tr>
+                    <tr></tr>
+
+                </table>
+
+               
+
+                <h5>Update History</h5>
+
+                <div class="update_history" *ngFor="let item of corpStatusHistoryData">
+                  <span class="user_update_status">{{item.status}}  </span>
+                  <p>
+                    <strong>Update By:</strong> {{item.updatedByUser}}&nbsp;&nbsp; <strong>Updated On</strong> {{item.updatedOn}} &nbsp;&nbsp;
+                    <span *ngIf="item.status=='Promise'"><strong>Promise Date:</strong> {{item.promiseDate}} &nbsp;&nbsp; <strong>Promise Amount:</strong>₹ {{item.promiseAmount|number:0}}</span>
+                    <span *ngIf="item.status=='Submission'"><strong>FromDate:</strong> {{item.sbmtFromDate}}&nbsp;&nbsp; <strong>ToDate</strong> {{item.sbmtToDate}} &nbsp;&nbsp;<strong>Amount:</strong>₹ {{item.sbmtAmount}} </span>
+                  </p>
+                  <!--<p *ngIf="item.status!='Submission'"><strong>Call Note:</strong> {{item.callNote}}</p>-->
+                  <div *ngIf="item.status!='Submission'">
+                    <strong>Call Note:</strong> <br />
+                    <div style="border:groove" *ngIf=" item.callNote.length>0">
+                      <span [innerHtml]="item.callNote"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div *ngFor="let item of corpStatusHistoryData">
+                        <span *ngIf="item.status=='Promise'">
+                        </span>
+                    </div>
+                </div>
+            </div>           
+            <div>               
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--code for view detail popup end-->
+
+<div class="modal fade" id="myModal1" *ngIf="viewCorporate">
+    <div class="modal-dialog modal-lg">
+        <form #calluserCorpSubmit="ngForm">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h6 class="modal-title text-center">{{viewCorporate.corporateName}}({{viewCorporate.corporateIcust}})</h6>
+                    <button type="button" id="popupClose" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+                </div>
+
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <select required class="form-control" name="sts" [(ngModel)]="flwupActStatusSelected" #sts="ngModel" (change)="selectActionUI()">
+                        <option [ngValue]="null">Select Status</option>
+                        <option *ngFor="let status of drpActionStatusData;" [ngValue]="status.id" [text]="status.name"></option>
+                      </select>
+                    </div>
+                  </div>
+                  <div id="type1" style="display:none">
+                    <div class="row">
+                      <div class="col-md-4 form-group">
+                        <label> Date (Promise/Received)</label>
+                        <!--<input type="text" id="promiseDt" class="form-control datepicker" />-->
+                        <input type="text" id="promiseDt" bsDatepicker [bsConfig]="datePickerConfig" [(ngModel)]="userInputData.fromDate" name="frDt" #frDt="ngModel" class="form-control" />
+                      </div>
+                      <div class="col-md-4 form-group">
+                        <label>Amount(₹)</label>
+                        <!--<input type="number" name="amount" id="amount" class="form-control" />-->
+                        <input type="number" name="amount" [(ngModel)]="userInputData.amount" id="amount" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label>Call Note</label>
+                      <app-ngx-editor [config]="editorConfig" [spellcheck]="true" [(ngModel)]="userInputData.htmlContent" name="content"></app-ngx-editor>
+                    </div>
+                  </div>
+                 
+                  <div class="form-group text-center">
+                    <input class="btn btn-primary" [disabled]="calluserCorpSubmit.invalid" type="submit" value="Submit" (click)="submitCorporate()" />
+                  </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

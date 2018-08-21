@@ -1,0 +1,34 @@
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.deps.json
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.csproj.CoreCompileInputs.cache
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.AssemblyInfoInputs.cache
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.AssemblyInfo.cs
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb
+C:\Users\product\Documents\RBTCreditControl\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.csprojResolveAssemblyReference.cache
+D:\RBT CREDIT CONTROL\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.deps.json
+D:\RBT CREDIT CONTROL\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+D:\RBT CREDIT CONTROL\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb
+D:\RBT CREDIT CONTROL\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.csproj.CoreCompileInputs.cache
+D:\RBT CREDIT CONTROL\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.AssemblyInfoInputs.cache
+D:\RBT CREDIT CONTROL\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.AssemblyInfo.cs
+D:\RBT CREDIT CONTROL\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+D:\RBT CREDIT CONTROL\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb
+D:\RBT CREDIT CONTROL\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.csprojAssemblyReference.cache
+D:\RBT Credit with CLI\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.deps.json
+D:\RBT Credit with CLI\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+D:\RBT Credit with CLI\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb
+D:\RBT Credit with CLI\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.csproj.CoreCompileInputs.cache
+D:\RBT Credit with CLI\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.AssemblyInfoInputs.cache
+D:\RBT Credit with CLI\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.AssemblyInfo.cs
+D:\RBT Credit with CLI\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+D:\RBT Credit with CLI\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb
+D:\RBT CLI\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.deps.json
+D:\RBT CLI\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+D:\RBT CLI\RBTCreditControl.Entity\bin\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb
+D:\RBT CLI\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.csproj.CoreCompileInputs.cache
+D:\RBT CLI\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.AssemblyInfoInputs.cache
+D:\RBT CLI\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.AssemblyInfo.cs
+D:\RBT CLI\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.dll
+D:\RBT CLI\RBTCreditControl.Entity\obj\Debug\netcoreapp2.0\RBTCreditControl.Entity.pdb

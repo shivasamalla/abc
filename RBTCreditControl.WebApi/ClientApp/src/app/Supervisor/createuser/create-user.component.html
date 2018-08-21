@@ -1,0 +1,63 @@
+<h1>Create User</h1>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" color="#fff" type="ball-clip-rotate-pulse"></ngx-spinner>
+<div class="content_area">
+  <!--<div id="floatalert">
+    {{successMsg}}
+  </div>-->
+  <form #rbtusercreationform="ngForm">
+    <small style="font-weight:600">Create User</small>
+    <div class="row">
+      <div class="col-md-3 form-group">
+        <label class="control-label">Employee Code</label>
+        <input type="text" id="emCode" required name="empCode" (change)="verifyEmpCode()" [(ngModel)]="userDetails.empCode" #empCode="ngModel" class="form-control" />
+        <!--<small *ngIf="empCode.errors?.pattern" class="validation-error-msg">Only numbers allowed</small>-->
+        <small class="validation-error-msg">{{empCodeErrorMsg}}</small>
+
+      </div>
+      <div class="col-md-3 form-group">
+        <label class="control-label">Employee Name</label>
+        <input type="text" disabled required name="empName" [(ngModel)]="userDetails.name" #empName="ngModel" class="form-control" />
+      </div>
+      <div class="col-md-3 form-group">
+        <label class="control-label">User Type</label>
+        <select class="form-control" id="userType" name="seluserType" [(ngModel)]="userDetails.userType" required #seluserType="ngModel">
+          <option [ngValue]="null">Please Select User</option>
+          <option [ngValue]="1">Back Office User</option>
+          <option [ngValue]="2">Calling User</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row" id="corporateList">
+      <div class="col-md-12 form-group">
+        <div *ngFor="let data of corporateData">
+          <h5>Branch -{{data.branchLocation}}({{data.branch}})</h5>
+          <div class="branchLocList" *ngIf="data.lstCorporateMaster.length!=0">
+            <!--<a style="color:red">{{i}}</a>-->
+            <ul>
+              <li *ngFor="let corp of data.lstCorporateMaster;" class="userCorpcheckbox_{{corp.id}}">
+                <label for="userCorpcheckbox_{{corp.id}}">
+                  <input type="checkbox" class="fl" value="{{corp.id}}" id="locCorpcheckbox_{{corp.id}}" (change)="corporatesSelected(corp.id,$event)" /> {{corp.name}}({{corp.no_}})
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="data.lstCorporateMaster.length==0">
+            No Corporates Found for   <b>{{data.branchLocation}}</b>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 form-group">
+        <input type="submit" [disabled]="rbtusercreationform.invalid" value="Create" (click)="createRBTCreditUser();" class="button btn btn-success" />
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="row">
+  <div class="col-md-4 form-group">
+    <a class="backtolist btn btn-primary" id="backbtn" [routerLink]="['/user/usercreation']" [queryParams]="{key:sessionToken}">Back to List</a>
+  </div>
+</div>

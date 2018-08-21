@@ -1,0 +1,61 @@
+<ul class='main-menu'>
+  <li [routerLinkActive]="['active']" *ngIf="userRole=='Admin'">
+    <a class="employee" [routerLink]="['/user/admin']" [queryParams]="{key:sessionToken}">
+      Add Supervisor
+    </a>
+  </li>
+  <li [routerLinkActive]="['active']" *ngIf="userRole=='Admin'">
+    <a class="region" [routerLink]="['/user/location']" [queryParams]="{key:sessionToken}">
+      Branch List
+    </a>
+  </li>
+
+
+
+  <li [routerLinkActive]="['active']" *ngIf="userRole=='Supervisor' || userRole =='BackOffice'">
+    <a class="corporates_list" [routerLink]="['/user/usercorporates']" [queryParams]="{key:sessionToken}">
+      Corporates List
+    </a>
+  </li>
+  <li [routerLinkActive]="['active']" *ngIf="userRole=='Supervisor'">
+    <a class="corporates" [routerLink]="['/user/rbtcorporates']" [queryParams]="{key:sessionToken}">
+      Corporates
+    </a>
+  </li>
+  <li [routerLinkActive]="['active']" *ngIf="userRole=='Supervisor'">
+    <a class="employee" [routerLink]="['/user/usercreation']" [queryParams]="{key:sessionToken}">
+      User Creation
+    </a>
+  </li>
+
+  <li [routerLinkActive]="['active']" *ngIf="userRole=='Calling'">
+    <a class="corporates_list" [routerLink]="['/user/callinguser']" [queryParams]="{key:sessionToken}">
+      Corporates List
+    </a>
+  </li>
+  <li [routerLinkActive]="['active']" *ngIf="userRole=='Calling'">
+    <a class="promises" [routerLink]="['/user/promise']" [queryParams]="{key:sessionToken}">
+      Promises
+    </a>
+  </li>
+  <li [routerLinkActive]="['active']" *ngIf="userRole=='Calling'" (click)="updateFollowupBlink()">
+    <a class="follow_up" [routerLink]="['/user/followup']" [queryParams]="{key:sessionToken}">
+      Follow Up
+    </a>
+  </li>
+  <li [routerLinkActive]="['active']" *ngIf="userRole=='Calling'">
+    <a class="other_status" [routerLink]="['/user/otherCorpStatus']" [queryParams]="{key:sessionToken}">
+      Other Status
+    </a>
+  </li>
+  <li [routerLinkActive]="['active']" *ngIf="userRole=='Supervisor'||userRole=='BackOffice'||userRole=='Calling'">
+    <a class="reports" [routerLink]="['/user/reports']" [queryParams]="{key:sessionToken}">
+      Reports
+    </a>
+  </li>
+  <!--<li [routerLinkActive]="['active']" >
+    <a class="reports" [routerLink]="['/user/changepassword']" [queryParams]="{key:sessionToken}">
+      Change Password
+    </a>
+  </li>-->
+</ul>

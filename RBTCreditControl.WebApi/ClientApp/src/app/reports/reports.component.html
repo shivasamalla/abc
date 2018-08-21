@@ -1,0 +1,171 @@
+<h1>RBT Credit Control Report</h1>
+<!--<button (click)="abcd()">Loader</button>-->
+<!--<a class="refreshBtn btn btn-primary" (click)="RefreshGrid()"><i class="fa fa-refresh" aria-hidden="true"></i></a>-->
+<div class="content_area morePadding">
+  <div id="floatalert">        {{successMsg}}   </div>
+
+  
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" color="#fff" type="ball-clip-rotate-pulse"></ngx-spinner>
+
+
+  <!--<div class="col-xs-12 col-12 col-md-4 form-group">
+    <input type="text"
+           placeholder="Daterangepicker"
+           class="form-control"  [(ngModel)]="range"
+           bsDaterangepicker [bsConfig]="Daterangepicker" >
+  </div>-->
+
+  <form #RBTReportsForm="ngForm">
+    <div class="row">
+      <div class="col-md-2">
+        <label>From Date</label>
+        <!-- <input required type="date"  id="fromDate" [(ngModel)]="supervisorReportsObj.fromDate" name="frDt" #frDt="ngModel" class="form-control" />-->
+        <input type="text" required id="fromDate" bsDatepicker [bsConfig]="datePickerConfig" [(ngModel)]="reportsData.fromDate" name="frDt" #frDt="ngModel" class="form-control" />
+      </div>
+      <div class="col-md-2">
+        <label>To Date</label>
+        <!-- <input type="date" required id="toDate" [(ngModel)]="supervisorReportsObj.toDate" name="toDt" #toDt="ngModel" class="form-control" />-->
+        <input type="text" required id="toDate" bsDatepicker [bsConfig]="datePickerConfig" [(ngModel)]="reportsData.toDate" name="toDt" #toDt="ngModel" class="form-control" />
+
+      </div>
+      <div class="col-md-2">
+        <label>Status</label>
+        <select name="sts" id="satus" [(ngModel)]="supervisorReportsObj.statusId" #sts="ngModel" class="form-control">
+          <option [ngValue]="0">Select Status</option>
+          <option *ngFor="let status of StatusData;" [ngValue]="status.id">{{status.name}}</option>
+        </select>
+      </div>
+      <div class="col-md-2" *ngIf="role=='Supervisor'">
+        <label>User</label>
+        <select name="user" id="reportUser" [(ngModel)]="supervisorReportsObj.userId" #user="ngModel" class="form-control">
+          <option [ngValue]="0">Select user</option>
+          <option *ngFor="let user of supervisorReportsData.userData;" [ngValue]="user.id">{{user.name}}</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label>ICUST</label>
+        <input type="text" class="form-control" [(ngModel)]="supervisorReportsObj.ICUST" name="icust" #icsut="ngModel" />
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary noLabel" [disabled]="RBTReportsForm.invalid" style="margin-top: 30px;" type="submit" value="Search" (click)="getReportApiCall(paging.page,paging.paginationSize)"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+
+  </form>
+  <br />
+  <div *ngIf="supervisorReportsData.resultData">
+    <table class='table table-striped'>
+      <thead class="thead-dark">
+        <tr>
+          <th>ICUST(LOC)</th>
+          <th>Name</th>
+          <th>Status</th>
+          <th> Amount</th>
+          <th>Phone</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="supervisorReportsData.resultData.length==0">
+          <td>No Records Found</td>
+        </tr>
+        <tr *ngFor="let item of supervisorReportsData.resultData">
+          <td>{{item.no_}}({{item.location}})</td>
+          <td>{{item.name}}</td>
+          <td>{{item.status}}</td>
+          <td>{{item.amount|number:0}}</td>
+          <td>{{item.phone}}</td>
+          <td><a href="#" data-toggle="modal" data-target="#myModal" (click)="reportViewClicked(item)">ViewDetails</a></td>
+        </tr>
+      </tbody>
+
+    </table>
+
+
+    <div class="corpPageFooter">
+      <div class="row">
+        <div class="col-md-2 pagiselect">
+          <select aria-hidden="true" (change)="noofRecordstoDisplay($event)">
+            <option *ngFor="let val of paging.drpdwnPageSizes" [ngValue]="val">{{val}}</option>
+          </select>
+        </div>
+        <div class="col-md-8">
+          <ul class="pagination" id="grouplist">
+            <li *ngIf="paging.totalNoofpages>=11" (click)="previousPage(paging.pageShow-10)">Previous</li>
+            <li *ngIf="paging.totalNoofpages>=paging.pageShow+1" id="li{{paging.pageShow+1}}" [ngClass]="{'active': paging.selectedIndex == paging.pageShow+1, 'list-group-item active': true}" (click)="currentPageBind(paging.pageShow+1)">{{paging.pageShow+1}}</li>
+            <li *ngIf="paging.totalNoofpages>=paging.pageShow+2" id="li{{paging.pageShow+2}}" [ngClass]="{'active': paging.selectedIndex == paging.pageShow+2, 'list-group-item': true}" (click)="currentPageBind(paging.pageShow+2)">{{paging.pageShow+2}}</li>
+            <li *ngIf="paging.totalNoofpages>=paging.pageShow+3" id="li{{paging.pageShow+3}}" [ngClass]="{'active': paging.selectedIndex == paging.pageShow+3, 'list-group-item': true}" (click)="currentPageBind(paging.pageShow+3)">{{paging.pageShow+3}}</li>
+            <li *ngIf="paging.totalNoofpages>=paging.pageShow+4" id="li{{paging.pageShow+4}}" [ngClass]="{'active': paging.selectedIndex == paging.pageShow+4, 'list-group-item': true}" (click)="currentPageBind(paging.pageShow+4)">{{paging.pageShow+4}}</li>
+            <li *ngIf="paging.totalNoofpages>=paging.pageShow+5" id="li{{paging.pageShow+5}}" [ngClass]="{'active': paging.selectedIndex == paging.pageShow+5, 'list-group-item': true}" (click)="currentPageBind(paging.pageShow+5)">{{paging.pageShow+5}}</li>
+            <li *ngIf="paging.totalNoofpages>=paging.pageShow+6" id="li{{paging.pageShow+6}}" [ngClass]="{'active': paging.selectedIndex == paging.pageShow+6, 'list-group-item': true}" (click)="currentPageBind(paging.pageShow+6)">{{paging.pageShow+6}}</li>
+            <li *ngIf="paging.totalNoofpages>=paging.pageShow+7" id="li{{paging.pageShow+7}}" [ngClass]="{'active': paging.selectedIndex == paging.pageShow+7, 'list-group-item': true}" (click)="currentPageBind(paging.pageShow+7)">{{paging.pageShow+7}}</li>
+            <li *ngIf="paging.totalNoofpages>=paging.pageShow+8" id="li{{paging.pageShow+8}}" [ngClass]="{'active': paging.selectedIndex == paging.pageShow+8, 'list-group-item': true}" (click)="currentPageBind(paging.pageShow+8)">{{paging.pageShow+8}}</li>
+            <li *ngIf="paging.totalNoofpages>=paging.pageShow+9" id="li{{paging.pageShow+9}}" [ngClass]="{'active': paging.selectedIndex == paging.pageShow+9, 'list-group-item': true}" (click)="currentPageBind(paging.pageShow+9)">{{paging.pageShow+9}}</li>
+            <li *ngIf="paging.totalNoofpages>=paging.pageShow+10" id="li{{paging.pageShow+10}}" [ngClass]="{'active': paging.selectedIndex == paging.pageShow+10, 'list-group-item': true}" (click)="currentPageBind(paging.pageShow+10)">{{paging.pageShow+10}}</li>
+            <li *ngIf="paging.totalNoofpages>=paging.pageShow+10" (click)="nextPage(paging.pageShow+10)">Next</li>
+          </ul>
+        </div>
+
+        <div class="col-md-2 pagiselect">
+          {{((paging.page-1)*paging.paginationSize)+1}}-{{paging.page*paging.paginationSize}} of {{paging.totalRecords|number}}
+        </div>
+      </div>
+    </div>
+
+
+    <!--code for view detail popup start-->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-center">Report Corporate Details</h4>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+          </div>
+          <div class="modal-body" *ngIf="supervisorReportsData.viewCorporate">
+            <table class="viewDtlsTble">
+              <tr>
+                <th>Name</th>
+                <td>{{supervisorReportsData.viewCorporate.name}}</td>
+                <th>ICUST</th>
+                <td>{{supervisorReportsData.viewCorporate.no_}}</td>
+              </tr>
+              <tr>
+                <th>Phone</th>
+                <td>{{supervisorReportsData.viewCorporate.phone}}</td>
+
+                <th>Location</th>
+                <td>{{supervisorReportsData.viewCorporate.location}}</td>
+              </tr>
+              <tr></tr>
+            </table>
+            <h5>Update History</h5>
+
+            <div class="update_history" *ngFor="let item of supervisorReportsData.corpStatusHistoryData">
+              <span class="user_update_status">{{item.status}}  </span>
+              <p>
+                <strong>Update By:</strong> {{item.updatedByUser}}&nbsp;&nbsp; <strong>Updated On</strong> {{item.updatedOn}} &nbsp;&nbsp;
+                <span *ngIf="item.status=='Promise'"><strong>Promise Date:</strong> {{item.promiseDate}} &nbsp;&nbsp; <strong>Promise Amount:</strong>₹ {{item.promiseAmount|number:0}}</span>
+                <span *ngIf="item.status=='Submission'"><strong>FromDate:</strong> {{item.sbmtFromDate}}&nbsp;&nbsp; <strong>ToDate</strong> {{item.sbmtToDate}} &nbsp;&nbsp;<strong>Amount:</strong>₹ {{item.sbmtAmount}} </span>
+              </p>
+              <p *ngIf="item.status!='Submission'"><strong>Call Note:</strong> {{item.callNote}}</p>
+            </div>
+
+            <!--<div class="row">
+                <div *ngFor="let item of corpStatusHistoryData">
+                    <span *ngIf="item.status=='Promise'">
+                    </span>
+                </div>
+            </div>-->
+          </div>
+          <div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--code for view detail popup end-->
+
+
+  </div>
+</div>
+

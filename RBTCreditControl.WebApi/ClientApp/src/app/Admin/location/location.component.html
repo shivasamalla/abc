@@ -1,0 +1,71 @@
+<h1>
+  Branch List
+  <!--<a class="btn btn-primary" [routerLink]="['/home/index/createLocation']" [queryParams]="{key:sessionToken}">Create</a>-->
+</h1>
+
+<div class="content_area">
+
+  <div id="floatalert">
+    {{successMsg}}
+  </div>
+
+  <!--<div id="apiLoader" *ngIf="!companyData"> Please wait....</div>-->
+  <table class='table table-striped'>
+    <thead class="thead-dark">
+      <tr>
+        <th>Branch Code</th>
+        <th>Branch Name</th>
+        <th>City Name</th>
+        <th>Dimensions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="locationData.length==0">
+        <td colspan="2">
+          No records Persent
+        </td>
+      </tr>
+      <tr *ngFor="let loc of locationData">
+        <td>{{loc.branch}}</td>
+        <td>{{loc.branchLocation}}</td>
+        <td>{{loc.cityName}}</td>
+        <td>{{loc.dimension}}</td>
+        <!--<td>
+            <a class="editbutton" [routerLink]="['/home/index/editLocation']" [queryParams]="{locId:loc.id,key:sessionToken}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        </td>-->
+        <!--<td>
+            <a class="deletebutton" [routerLink]="" (click)="deleteLocation(loc.id)"><i class="fa fa-trash" aria-hidden="true">delete</i></a>
+        </td>-->
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+<div class="corpPageFooter">
+  <div class="row">
+    <div class="col-md-2 pagiselect">
+      <select aria-hidden="true" (change)="noofRecordstoDisplay($event)">
+        <option *ngFor="let val of drpdwnPageSizes" [ngValue]="val">{{val}}</option>
+      </select>
+      Total: {{totalRecords}}
+    </div>
+    <div class="col-md-8">
+      <ul class="pagination">
+        <li (click)="previousPage(pageS-10)">Previous</li>
+        <li *ngIf="totalNoofpages>=pageS+1" (click)="currentPageBind(pageS+1)">{{pageS+1}}</li>
+        <li *ngIf="totalNoofpages>=pageS+2" (click)="currentPageBind(pageS+2)">{{pageS+2}}</li>
+        <li *ngIf="totalNoofpages>=pageS+3" (click)="currentPageBind(pageS+3)">{{pageS+3}}</li>
+        <li *ngIf="totalNoofpages>=pageS+4" (click)="currentPageBind(pageS+4)">{{pageS+4}}</li>
+        <li *ngIf="totalNoofpages>=pageS+5" (click)="currentPageBind(pageS+5)">{{pageS+5}}</li>
+        <li *ngIf="totalNoofpages>=pageS+6" (click)="currentPageBind(pageS+6)">{{pageS+6}}</li>
+        <li *ngIf="totalNoofpages>=pageS+7" (click)="currentPageBind(pageS+7)">{{pageS+7}}</li>
+        <li *ngIf="totalNoofpages>=pageS+8" (click)="currentPageBind(pageS+8)">{{pageS+8}}</li>
+        <li *ngIf="totalNoofpages>=pageS+9" (click)="currentPageBind(pageS+9)">{{pageS+9}}</li>
+        <li *ngIf="totalNoofpages>=pageS+10" (click)="currentPageBind(pageS+10)">{{pageS+10}}</li>
+        <li (click)="nextPage(pageS+10)">Next</li>
+      </ul>
+    </div>
+  </div>
+</div>

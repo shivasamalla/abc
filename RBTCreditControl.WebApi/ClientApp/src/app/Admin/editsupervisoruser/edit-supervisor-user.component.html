@@ -1,0 +1,59 @@
+<div class="content_area">
+  <div id="floatalert">{{successMsg}}</div>
+  <form #rbtusercreationform="ngForm">
+    <div class="row">
+      <div class="col-md-2 form-group">
+        <label class="control-label">Employee Code </label>
+        <input type="text" id="emCode" disabled required name="empCode" [(ngModel)]="userDetails.empCode" #empCode="ngModel" class="form-control" />
+        <!--<small *ngIf="empCode.errors?.pattern" class="validation-error-msg">Only numbers allowed</small>-->
+      </div>
+      <div class="col-md-3 form-group">
+        <label class="control-label">Employee Name</label>
+        <input type="text" required name="empName" [(ngModel)]="userDetails.name" #empName="ngModel" class="form-control" />
+      </div>
+      <div class="col-md-2 form-group">
+        <label class="control-label">Status</label>
+        <select [(ngModel)]="userDetails.isActive" name="staus" #status="ngModel" class="form-control">
+          <option [ngValue]="true">Active</option>
+          <option [ngValue]="false">InActive</option>
+        </select>
+      </div>
+      <div class="col-md-4 form-group">
+        <label class="control-label">Email</label>
+        <input type="text" name="empEmail" [(ngModel)]="userDetails.email" #empEmail="ngModel" class="form-control" />
+      </div>
+
+    </div>
+    <div class="row">
+      <div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <div class="branch_locations">
+          <h5>Branches :</h5>
+          <div class="branchLocList">
+            <ul class="locationsList">
+              <li *ngFor="let branch of BranchesData">
+                <input type="checkbox" value="{{branch.id}}" id="supervisorBranch_{{branch.id}}" (change)="branchesSelected(branch.id,$event)" /> {{branch.branchLocation}} &nbsp;({{branch.branch}})
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center form-group">
+        <input type="submit" [disabled]="rbtusercreationform.invalid" value="Save" (click)="editRBTCreditSupervisor();" class="button btn btn-success" />
+        <!--  <input type="submit" *ngIf="userDetails.fk_LocationId==0" disabled value="Create" (click)="createRBTCreditUser()" class="button btn btn-success" />-->
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="row">
+  <div class="col-md-4 form-group">
+    <a class="backtolist btn btn-primary" [routerLink]="['/user/admin']" [queryParams]="{key:sessionToken}">Back to List</a>
+  </div>
+</div>

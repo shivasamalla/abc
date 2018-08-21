@@ -1,0 +1,65 @@
+<h1>Create Corporate</h1>
+<div class="content_area morePadding">
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" color="#fff" type="ball-clip-rotate-pulse"></ngx-spinner>
+  <!--<div id="floatalert">{{successMsg}}</div>-->
+  <!--<form #rbtusercreationform="ngForm">-->
+  <div class="row">
+    <div class="col-md-4">
+      <label>Location Code : {{SupervisorLocation}}</label>
+      <select class="form-control" required name="location" id="location" [(ngModel)]="supervisorLocation" #location="ngModel">
+        <option [ngValue]="null">Select Location</option>
+        <option *ngFor="let loc of SupervisorLocationData" [ngValue]="loc.branch">{{loc.branchLocation}}({{loc.branch}})</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label>Search Corporate(customer)</label>
+      <input type="text" required name="icust" [(ngModel)]="searchKey" #icust="ngModel" class="form-control" />
+    </div>
+    <div class="col-md-4">
+
+      <input type="submit" value="Get" (click)="GetICust()" style="margin-top:30px;" class="button btn btn-success" />
+    </div>
+  </div>
+
+</div>
+
+<!--</form>-->
+<a class="backtolist btn btn-primary" [routerLink]="['/user/rbtcorporates']" [queryParams]="{key:sessionToken}">Back to list</a>
+
+<div class="content_area" id="erpCorporateList" style="display:none">
+  <div class="row">
+    <div class="col-md-12">
+      <table class='table table-striped'>
+        <thead class="thead-dark">
+          <tr>
+            <th>ICUST No</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Location</th>
+            <th>Add</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cust of customerData">
+            <td>{{cust.no_}}</td>
+            <td>{{cust.name}}</td>
+            <td>{{cust.phone}}</td>
+            <td>{{cust.email}}</td>
+            <td>{{cust.location}}</td>
+            <td><button class="btn btn-primary btnSmall" (click)="addCorporate(cust)">Add</button></td>
+
+
+            <!--<td>
+                <a class="editbutton" [routerLink]="['/home/index/editLocation']" [queryParams]="{locId:loc.id}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            </td>-->
+            <!--<td>
+                <a class="deletebutton" [routerLink]="" (click)="deleteLocation(loc.id)"><i class="fa fa-trash" aria-hidden="true">delete</i></a>
+            </td>-->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
